@@ -17,6 +17,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Note 3"
+#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Note 10.1 (2014)"
 
 #endif

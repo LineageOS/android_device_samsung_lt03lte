@@ -496,7 +496,7 @@ on boot
 	chmod 0660 /sys/class/timed_output/vibrator/pwm_default
 	chown system system /sys/class/timed_output/vibrator/pwm_threshold
 	chmod 0660 /sys/class/timed_output/vibrator/pwm_threshold
-    
+
     # Panel color temperature
     chmod 0660 /sys/class/lcd/panel/panel_colors
     chown system system /sys/class/lcd/panel/panel_colors
