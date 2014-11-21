@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab17558_9ae70c40",
+        "filename": "releasetools.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-11-21T16:52:11Z",
+      "side": 1,
+      "message": "Doesn\u0027t /system need to be mounted for all the above operations too?",
+      "revId": "ba23e33abb4fca1083ba85b36e439e77c3ab0a22",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
