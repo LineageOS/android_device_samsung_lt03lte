@@ -58,7 +58,7 @@ BOARD_HARDWARE_CLASS += device/samsung/lt03lte/cmhw
 TARGET_NO_COMPAT_GRALLOC_PERFORM := true
 
 # GPS
-TARGET_NO_RPC := true
+TARGET_GPS_HAL_PATH := $(LOCAL_PATH)/gps
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
