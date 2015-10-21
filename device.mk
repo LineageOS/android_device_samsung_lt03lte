@@ -100,6 +100,10 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     libxml2
 
+# Radio
+PRODUCT_PACKAGES += \
+    libril_shim
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
