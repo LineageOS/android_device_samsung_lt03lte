@@ -19,4 +19,6 @@
 
 #define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Note 10.1 (2014)"
 
+#define BTM_WBS_INCLUDED TRUE
+
 #endif
