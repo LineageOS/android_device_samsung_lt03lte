@@ -71,6 +71,9 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)/releasetools
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
 
