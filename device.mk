@@ -60,6 +60,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.secwvk=144 \
     ro.sf.lcd_density=320
 
+# IPv6 tethering
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
+
 # MSM IPC Router security configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
