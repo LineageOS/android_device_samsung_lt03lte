@@ -75,6 +75,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.msm8974
 
+# Qualcomm
+PRODUCT_PACKAGES += \
+    libcnefeatureconfig \
+    libxml2
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
