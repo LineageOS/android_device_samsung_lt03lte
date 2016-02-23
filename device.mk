@@ -22,6 +22,9 @@ $(call inherit-product-if-exists, vendor/samsung/lt03lte/lt03lte-vendor.mk)
 # Declare tablet
 PRODUCT_CHARACTERISTICS := tablet
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
 # Use high density drawables
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
