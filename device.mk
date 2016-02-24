@@ -117,6 +117,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=0
 
+# WiFi
+PRODUCT_PACKAGES += \
+    libnetcmdiface \
+    macloader \
+    hostapd \
+    hostapd_default.conf \
+    dhcpcd.conf \
+    libwpa_client \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
 # Allow lockscreen rotation
 PRODUCT_PROPERTY_OVERRIDES += \
     lockscreen.rot_override=true
