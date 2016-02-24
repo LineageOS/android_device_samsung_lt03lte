@@ -7,3 +7,6 @@ wifi.interface=wlan0
 
 # Set vendor extensions library
 ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
+
+# Camera
+camera2.portability.force_api=1
