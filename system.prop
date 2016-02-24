@@ -4,3 +4,6 @@
 
 # Set WiFi interface
 wifi.interface=wlan0
+
+# Set vendor extensions library
+ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
