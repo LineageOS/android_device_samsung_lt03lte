@@ -147,7 +147,7 @@ etc/imx135_module_info.xml
 
 # DRM
 bin/qseecomd
-lib/libdrmdecrypt.so
+vendor/lib/libdrmdecrypt.so
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -263,7 +263,7 @@ bin/time_daemon
 -vendor/lib/libTimeService.so
 
 # Widevine
-lib/drm/libdrmwvmplugin.so
+vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
