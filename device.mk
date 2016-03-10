@@ -75,6 +75,10 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
 
+# Media profiles
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+
 # MSM IPC Router security configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
