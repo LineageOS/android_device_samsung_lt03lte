@@ -37,6 +37,9 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 TARGET_KERNEL_CONFIG := cyanogenmod_lt03lte_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/lt03lte
 
+# Audio
+AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
