@@ -99,6 +99,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.msm8974
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8974
+
 # Qualcomm
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
