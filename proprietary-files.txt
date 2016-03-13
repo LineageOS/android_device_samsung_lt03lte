@@ -242,6 +242,7 @@ lib/libril.so
 lib/libsecnativefeature.so
 lib/libsecril-client.so
 lib/libsec-ril.so
+vendor/lib/libcneapiclient.so
 vendor/lib/libnetmgr.so
 vendor/lib/libril-qcril-hook-oem.so
 
