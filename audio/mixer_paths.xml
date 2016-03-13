@@ -1008,4 +1008,12 @@
 		<!-- not exsit -->
 	</path>
 
+	<path name="speaker-cdp">
+        <path name="speaker" />
+    </path>
+
+    <path name="speaker-and-headphones-cdp">
+        <path name="speaker-and-headphones" />
+    </path>
+
 </mixer>
