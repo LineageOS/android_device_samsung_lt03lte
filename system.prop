@@ -47,9 +47,7 @@ persist.eons.enabled=true
 # Use CP SE13 Table
 persist.radio.use_se_table_only=1
 
-# Data modules (For evolution RIL model)
-ro.use_data_netmgrd=false
-persist.data.netmgrd.qos.enable=false
+persist.data.netmgrd.qos.enable=true
 
 persist.radio.jbims=1
 
