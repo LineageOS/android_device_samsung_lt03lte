@@ -81,6 +81,9 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)/releasetools
 
+# RIL
+BOARD_RIL_CLASS := ../../../device/samsung/lt03lte/ril
+
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
 
