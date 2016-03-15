@@ -237,7 +237,10 @@ vendor/lib/libqmi.so
 vendor/lib/libxml.so
 
 # Radio
+bin/efsks
+bin/ks
 bin/netmgrd
+bin/qcks
 bin/qmuxd
 bin/radish
 bin/rfs_access
@@ -287,10 +290,7 @@ etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_net.txt
 
 # Unknown
-bin/efsks
 bin/hci_qcomm_init
-bin/ks
-bin/qcks
 lib/libcordon.so
 lib/libfactoryutil.so
 lib/libliveframework.so
