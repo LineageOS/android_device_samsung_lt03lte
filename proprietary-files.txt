@@ -156,6 +156,10 @@ vendor/lib/librpmb.so
 vendor/lib/libssd.so
 
 # GPS
+lib/hw/gps.default.so
+lib/libgps.utils.so
+lib/libloc_core.so
+lib/libloc_eng.so
 lib/libloc_api_v02.so
 vendor/lib/hw/flp.default.so
 vendor/lib/libgeofence.so
