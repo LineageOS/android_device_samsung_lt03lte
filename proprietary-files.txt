@@ -31,7 +31,6 @@ vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth
-bin/btnvtool
 vendor/firmware/BCM4339_003.001.009.0061.0300.hcd
 
 # Camera
@@ -290,7 +289,6 @@ etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_net.txt
 
 # Unknown
-bin/hci_qcomm_init
 lib/libcordon.so
 lib/libfactoryutil.so
 lib/libliveframework.so
