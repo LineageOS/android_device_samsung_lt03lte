@@ -68,9 +68,12 @@ on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
+    # permissions for bluetooth.
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
     chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_lpm
     chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
@@ -91,8 +94,14 @@ on boot
     chown root system /dev/socket
     chmod 775 /dev/socket
 
+    # for BT MAC address
+    mkdir /efs/bluetooth 0775 radio system
+    # if already exist
+    chown radio system /efs/bluetooth
+    chmod 0775 /efs/bluetooth
+
     # bluetooth LPM
-    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0660 /proc/bluetooth/sleep/lpm
     chmod 0220 /proc/bluetooth/sleep/btwrite
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
@@ -185,6 +194,10 @@ on boot
     chmod 0660 /sys/class/input/input8/enabled
     chown system system /sys/class/input/input9/enabled
     chmod 0660 /sys/class/input/input9/enabled
+    chown system system /sys/class/input/input10/enabled
+    chmod 0660 /sys/class/input/input10/enabled
+    chown system system /sys/class/input/input11/enabled
+    chmod 0660 /sys/class/input/input11/enabled
 
     # For disabling softkeys *FIXME*
     chown system system  /sys/class/sec/sec_touchkey/brightness
@@ -227,19 +240,9 @@ on boot
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
-    # permission for Input Device(Touchkey).
-    chmod 0660 /sys/class/input/input2/enabled
-    chown system system /sys/class/input/input2/enabled
-    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
-    chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
-    chown system radio /sys/class/sec/sec_touchkey/glove_mode
-    chown system radio /sys/class/sec/sec_touchkey/flip_mode
-    chown system radio /sys/class/sec/sec_touchkey/boost_level
-
     # permission for Input Device(Wacom).
     chmod 0660 /sys/class/input/input4/enabled
     chown system system /sys/class/input/input4/enabled
-    chown system system /sys/class/input/input18/enabled
 
     # permissions for S-Pen
     chmod 0660 /sys/class/input/input3/enabled
@@ -253,6 +256,25 @@ on boot
     chown system radio /sys/class/sec/sec_epen/epen_checksum_result
     chown system radio /sys/class/sec/sec_epen/epen_saving_mode
     chown system radio /sys/class/sec/sec_epen/boost_level
+    
+    # permission for Input Device (Wacom).
+    chmod 0660 /sys/class/input/input3/enabled
+    chown system system /sys/class/input/input3/enabled
+    chown system radio /sys/class/sec/sec_epen/epen_firm_update
+    chown system radio /sys/class/sec/sec_epen/epen_rotation
+    chown system radio /sys/class/sec/sec_epen/epen_hand
+    chown system radio /sys/class/sec/sec_epen/epen_reset
+    chown system radio /sys/class/sec/sec_epen/epen_reset_result
+    chown system radio /sys/class/sec/sec_epen/epen_checksum
+    chown system radio /sys/class/sec/sec_epen/epen_checksum_result
+    chown system radio /sys/class/sec/sec_epen/epen_saving_mode
+    chown system radio /sys/class/sec/sec_epen/boost_level
+
+    # permissions for Input Device (Touch)
+    chmod 0660 /sys/class/input/input2/enabled
+    chown system system /sys/class/input/input2/enabled
+    chown system radio /sys/class/sec/sec_touchkey/extra_button_event
+    chown system radio /sys/class/sec/sec_touchscreen/set_tsp_for_inputmethod
 
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
