@@ -31,7 +31,7 @@ vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth
-vendor/firmware/BCM4339_003.001.009.0061.0300.hcd
+vendor/firmware/BCM4335_003.001.009.0061.0300.hcd
 
 # Camera
 bin/mm-qcamera-daemon
