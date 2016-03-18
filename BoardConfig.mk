@@ -91,6 +91,7 @@ BOARD_RIL_CLASS := ../../../device/samsung/lt03lte/ril
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # WiFi
 BOARD_HAVE_SAMSUNG_WIFI     := true
