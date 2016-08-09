@@ -62,7 +62,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8974
+    camera.msm8974 \
+    Snap
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
