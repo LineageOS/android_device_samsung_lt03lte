@@ -266,7 +266,7 @@
 
     <!-- Boolean to enable stylus gestures -->
     <bool name="config_stylusGestures">true</bool>
-    
+
     <bool name="config_hotswapCapable">true</bool>
 
     <!-- Hardware 'face' keys present on the device, stored as a bit field.
@@ -307,5 +307,8 @@
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
     <integer name="config_doubleTapOnHomeBehavior">2</integer>
+
+    <!-- Enable blur support -->
+    <bool name="config_ui_blur_enabled">true</bool>
 
 </resources>
