@@ -67,6 +67,9 @@ TARGET_INIT_VENDOR_LIB := libinit_msm8974
 TARGET_LIBINIT_MSM8974_DEFINES_FILE := device/samsung/lt03lte/init/init_lt03lte.cpp
 TARGET_UNIFIED_DEVICE := true
 
+# Legacy BLOB Support
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
