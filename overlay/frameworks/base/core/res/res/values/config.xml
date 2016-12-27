@@ -261,8 +261,8 @@
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
     <bool name="config_enableTranslucentDecor">true</bool>
 
-    <!-- Boolean to enable stylus gestures -->
-    <bool name="config_stylusGestures">true</bool>
+    <!-- Boolean to enable stylus gestures
+    <bool name="config_stylusGestures">true</bool> -->
 
     <bool name="config_hotswapCapable">true</bool>
 
@@ -305,7 +305,10 @@
     -->
     <integer name="config_doubleTapOnHomeBehavior">2</integer>
 
-    <!-- Enable blur support -->
-    <bool name="config_ui_blur_enabled">true</bool>
+    <!-- Enable blur support
+    <bool name="config_uiBlurEnabled">true</bool> -->
+
+    <!-- Enable freeform windows -->
+    <bool name="config_freeformWindowManagement">true</bool>
 
 </resources>
