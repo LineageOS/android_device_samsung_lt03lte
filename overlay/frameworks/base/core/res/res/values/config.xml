@@ -305,8 +305,8 @@
     -->
     <integer name="config_doubleTapOnHomeBehavior">2</integer>
 
-    <!-- Enable blur support
-    <bool name="config_uiBlurEnabled">true</bool> -->
+    <!-- Enable blur support -->
+    <bool name="config_uiBlurEnabled">true</bool>
 
     <!-- Enable freeform windows -->
     <bool name="config_freeformWindowManagement">true</bool>
