@@ -55,15 +55,16 @@ on fs
     check_fs /dev/block/platform/msm_sdcc.1/by-name/efs ext4
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime data=ordered,nomblk_io_submit,noauto_da_alloc,errors=panic
     chown system radio /efs
-     chmod 0771 /efs
-#firmware_file
+    chmod 0771 /efs
+    
+    # Firmware_file
     wait /dev/block/platform/msm_sdcc.1/by-name/apnhlos
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/apnhlos /firmware ro shortname=lower,uid=1000,gid=1000,dmask=222,fmask=333,context=u:object_r:firmware_file:s0
-		# 444 file mode, 555 dirmode
+	# 444 file mode, 555 dirmode
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware-modem ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
-     write /sys/kernel/boot_adsp/boot 1
-     setprop qcom.audio.init complete
+    write /sys/kernel/boot_adsp/boot 1
+    setprop qcom.audio.init complete
 
     restorecon_recursive /persist
     restorecon_recursive /efs
@@ -76,11 +77,11 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /tombstones/mdm 0771 system system
 
-    # create directory for ril data
+    # Create directory for ril data
     mkdir /data/misc/radio 0775 radio radio
     mkdir /data/misc/radio/hatp 0775 radio system
 
-    # drm and related files in EFS
+    # Drm and related files in EFS
     mkdir /efs/drm 0774 drm system
     mkdir /efs/drm/sdrm 0774 drm system
     mkdir /efs/drm/sdrm/data_agent 0774 drm system
@@ -91,6 +92,7 @@ on post-fs-data
     restorecon /efs/prox_cal
     restorecon /efs/mps_code.dat
     restorecon_recursive /efs/FactoryApp
+
     # DivX DRM
     mkdir /efs/.files 0775
     mkdir /efs/.files/.dx1 0775
@@ -103,31 +105,31 @@ on post-fs-data
     chmod 0775 /efs/.files/.dm33
     chmod 0775 /efs/.files/.mp301
 
-# h2k permission
+    # h2k permission
     chmod 0644 /efs/redata.bin
     chown radio radio /efs/h2k.dat
     chmod 0644 /efs/h2k.dat
 
-# DRK permission
+    # DRK permission
     mkdir /efs/prov 0770 radio system
     chown radio system /efs/prov/libdevkm.lock
     chmod 0660 /efs/prov/libd
 
-    #OTG Test
+    # OTG Test
     chown system radio /sys/class/host_notify/usb_otg/booster
     chmod 0660 /sys/class/host_notify/usb_otg/booster
 
-    #Essential node for usbservice
+    # Essential node for usbservice
     mkdir /dev/bus/ 755 root root
     mkdir /dev/bus/usb 755 root root
 
-    # wifi
+    # Wifi
     mkdir /efs/wifi 0775 system system
 
     # Permission for fast dormacy for RIL
     chown system radio /sys/devices/virtual/sec/bamdmux/waketime
 
-    # for TRP/TIS
+    # TRP/TIS
     write /data/.psm.info 1
     chown system root /data/.psm.info
     chmod 0660 /data/.psm.info
@@ -141,15 +143,12 @@ on post-fs-data
     chmod 0644 /dev/icdr
     chown system system /dev/tzic
 
-    # h2k permission
-    chmod 0644 /efs/redata.bin
-
     chown system camera /sys/class/flash/flash/flash_power
     chmod 660 /sys/class/flash/flash/flash_power
 
 on boot
 
-# MUIC
+    # MUIC
     chown radio system /sys/class/sec/switch/usb_sel
     chown radio system /sys/class/sec/switch/usb_state
     chown radio system /sys/class/sec/switch/uart_sel
@@ -158,10 +157,10 @@ on boot
     chown system radio /sys/class/sec/switch/adc
     chown system radio /sys/class/sec/switch/otg_test
 
-# Fingerprint
+    # Fingerprint
     mkdir /dev/validity 0775 system system
 
-# SEC DVFS sysfs node
+    # SEC DVFS sysfs node
     chown radio system /sys/power/cpufreq_max_limit
     chown radio system /sys/power/cpufreq_min_limit
     chown radio system /sys/power/cpufreq_table
@@ -225,7 +224,6 @@ on boot
     chown system system /sys/class/lcd/panel/partial_disp
     chmod 0660 /sys/class/lcd/panel/partial_disp
 
-
     # LCD HMT
     chown radio system /sys/class/lcd/panel/hmt_on
     chown radio system /sys/class/lcd/panel/hmt_bright
@@ -259,23 +257,23 @@ on boot
     chown system radio /sys/class/tcon/tcon/black_test
     chown system radio /sys/class/tcon/tcon/tcon_test
 
-# Adjust YUV to RGB Conversion(CSC_Conversion)
+    # Adjust YUV to RGB Conversion(CSC_Conversion)
     chown system media_rw /sys/class/graphics/fb0/csc_cfg
     chmod 0660 /sys/class/graphics/fb0/csc_cfg
 
-#OTG Test
+    # OTG Test
     chown system radio /sys/class/host_notify/usb_otg/booster
     chmod 0660 /sys/class/host_notify/usb_otg/booster
 
-#Essential node for usbservice
+    # Essential node for usbservice
     mkdir /dev/bus/ 755 root root
     mkdir /dev/bus/usb 755 root root
 
-# Permissions for InputDevices.
+    # Permissions for InputDevices.
     chown system radio /sys/class/sec/tsp/cmd
     chown system system /sys/class/sec/sec_touchkey/brightness
 
-# Permissions for Camera
+    # Permissions for Camera
     chown system radio /sys/class/camera/rear/rear_camfw
     chown system radio /sys/class/camera/rear/rear_camfw_load
     chown system radio /sys/class/camera/rear/rear_camtype
@@ -314,18 +312,19 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_max
     chown root radio /proc/cmdline
 
-# Permissions for Audio
+    # Permissions for Audio
     chown system system /sys/devices/fe12f000.slim/es705-codec-gen0/keyword_grammar_path
     chown system system /sys/devices/fe12f000.slim/es705-codec-gen0/keyword_net_path
 
-# Accelerometer_sensor
+    # Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
     chown system radio /sys/class/sensors/accelerometer_sensor/calibration
     chown system radio /sys/class/sensors/accelerometer_sensor/reactive_alert
     chown system radio /sys/class/sensors/accelerometer_sensor/vendor
     chown system radio /sys/class/sensors/accelerometer_sensor/name
     chown system radio /sys/class/sensors/accelerometer_sensor/selftest
-# Proximity_sensor
+    
+    # Proximity_sensor
     chown system radio /sys/class/sensors/proximity_sensor/state
     chown system radio /sys/class/sensors/proximity_sensor/raw_data
     chown system radio /sys/class/sensors/proximity_sensor/prox_avg
@@ -338,12 +337,14 @@ on boot
     chown system radio /sys/class/sensors/proximity_sensor/thresh_high
     chown system radio /sys/class/sensors/proximity_sensor/thresh_low
     chown system radio /sys/class/sensors/proximity_sensor/barcode_emul_en
-# Light_sensor
+
+    # Light_sensor
     chown system radio /sys/class/sensors/light_sensor/lux
     chown system radio /sys/class/sensors/light_sensor/raw_data
     chown system radio /sys/class/sensors/light_sensor/vendor
     chown system radio /sys/class/sensors/light_sensor/name
-# Gyro_sensor
+
+    # Gyro_sensor
     chown system radio /sys/class/sensors/gyro_sensor/power_on
     chown system radio /sys/class/sensors/gyro_sensor/power_off
     chown system radio /sys/class/sensors/gyro_sensor/temperature
@@ -351,13 +352,15 @@ on boot
     chown system radio /sys/class/sensors/gyro_sensor/selftest_dps
     chown system radio /sys/class/sensors/gyro_sensor/vendor
     chown system radio /sys/class/sensors/gyro_sensor/name
-# Barometer_sensor
+
+    # Barometer_sensor
     chown system radio /sys/class/sensors/barometer_sensor/sea_level_pressure
     chown system radio /sys/class/sensors/barometer_sensor/vendor
     chown system radio /sys/class/sensors/barometer_sensor/name
     chown system radio /sys/class/sensors/barometer_sensor/calibration
-# Magnetic_sensor
-#    chown system radio /dev/akm8963
+
+    # Magnetic_sensor
+    #chown system radio /dev/akm8963
     chown system radio /sys/class/sensors/magnetic_sensor/raw_data
     chown system radio /sys/class/sensors/magnetic_sensor/vendor
     chown system radio /sys/class/sensors/magnetic_sensor/name
@@ -365,14 +368,16 @@ on boot
     chown system radio /sys/class/sensors/magnetic_sensor/adc
     chown system radio /sys/class/sensors/magnetic_sensor/dac
     chown system radio /sys/class/sensors/magnetic_sensor/status
-# Temphumidity_sensor
+
+    # Temphumidity_sensor
     chown system radio /sys/class/sensors/temphumidity_sensor/vendor
     chown system radio /sys/class/sensors/temphumidity_sensor/name
     chown system radio /sys/class/sensors/temphumidity_sensor/engine_ver
     chown system radio /sys/class/sensors/temphumidity_sensor/engine_ver2
     chown system radio /sys/class/sensors/temphumidity_sensor/cp_thm
     chown system radio /sys/class/sensors/temphumidity_sensor/send_accuracy
-# Grip_sensor
+
+    # Grip_sensor
     chown system radio /sys/class/sensors/grip_sensor/reset
     chown system radio /sys/class/sensors/grip_sensor/vendor
     chown system radio /sys/class/sensors/grip_sensor/name
@@ -382,7 +387,8 @@ on boot
     chown system radio /sys/class/sensors/grip_sensor/thresh_touch_check
     chown system radio /sys/class/sensors/grip_sensor/onoff
     chown system radio /sys/class/sensors/grip_sensor/erase_cal
-# SensorHub
+
+    # SensorHub
     chown system radio /sys/class/sensors/ssp_sensor/enable
     chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
     chown system radio /sys/class/sensors/ssp_sensor/mcu_name
@@ -402,39 +408,18 @@ on boot
     chmod 0600 /dev/batch_io
     chown system system /dev/batch_io
 
-    # IIO devices for SensorHub
-    chmod 0600 /dev/iio:device0
-    chown system system /dev/iio:device0
-    chmod 0600 /dev/iio:device1
-    chown system system /dev/iio:device1
-    chmod 0600 /dev/iio:device2
-    chown system system /dev/iio:device2
-    chmod 0600 /dev/iio:device3
-    chown system system /dev/iio:device3
-    chmod 0600 /dev/iio:device4
-    chown system system /dev/iio:device4
-    chown system system /sys/bus/iio/devices/iio:device0/buffer/length
-    chown system system /sys/bus/iio/devices/iio:device0/buffer/enable
-    chown system system /sys/bus/iio/devices/iio:device1/buffer/length
-    chown system system /sys/bus/iio/devices/iio:device1/buffer/enable
-    chown system system /sys/bus/iio/devices/iio:device2/buffer/length
-    chown system system /sys/bus/iio/devices/iio:device2/buffer/enable
-    chown system system /sys/bus/iio/devices/iio:device3/buffer/length
-    chown system system /sys/bus/iio/devices/iio:device3/buffer/enable
-    chown system system /sys/bus/iio/devices/iio:device4/buffer/length
-    chown system system /sys/bus/iio/devices/iio:device4/buffer/enable
-
-# Gesture_sensor
+    # Gesture_sensor
     chown system radio /sys/class/sensors/gesture_sensor/vendor
     chown system radio /sys/class/sensors/gesture_sensor/name
     chown system radio /sys/class/sensors/gesture_sensor/raw_data
     chown system radio /sys/class/sensors/gesture_sensor/ir_current
     chown system radio /sys/class/sensors/gesture_sensor/selftest
-# SHTC1 BULK
+
+    # SHTC1 BULK
     chmod 0600 /dev/shtc1_sensor
     chown system system /dev/shtc1_sensor
 
-# Permissions for SSRM
+    # Permissions for SSRM
     chmod 0664 /sys/devices/platform/sec-thermistor/temperature
     chmod 0664 /sys/class/power_supply/battery/siop_level
     chmod 0664 /sys/class/power_supply/battery/test_charge_current
@@ -442,19 +427,19 @@ on boot
     chown radio system /sys/class/power_supply/battery/siop_level
     chown radio system /sys/class/power_supply/battery/test_charge_current
 
-# MOBEAM
+    # MOBEAM
     chown system radio /sys/class/sec/sec_barcode_emul/vendor
     chown system radio /sys/class/sec/sec_barcode_emul/name
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_send
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_led_status
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_ver_check
 
-# NFC_NXP
+    # NFC_NXP
     setprop ro.nfc.port "I2C"
     chmod 0600 /dev/pn547
     chown nfc nfc /dev/pn547
 
-# NFC_BROADCOM
+    # NFC_BROADCOM
     chmod 0600 /dev/bcm2079x
     chown nfc nfc /dev/bcm2079x
     mkdir /data/nfc
@@ -464,21 +449,22 @@ on boot
     chown nfc nfc /data/nfc
     chown nfc nfc /data/nfc/param
 
-# IR_LED
+    # IR_LED
     chown system radio /sys/class/sec/sec_ir/ir_send
     chown system radio /sys/class/sec/sec_ir/ir_send_result
-# Permission for HALL IC
+
+    # Permission for HALL IC
     chown system radio /sys/class/sec/sec_key/hall_detect
 
-# HDCP 2.x
+    # HDCP 2.x
     mkdir /data/system/hdcp2 0775 system system
 
-# h2k permission
+    # h2k permission
     chown radio system /efs/redata.bin
     chmod 0644 /efs/h2k.dat
     mkdir /data/misc/radio/hatp 0775 radio system
 
-# Permissions for Charging
+    # Permissions for Charging
     chown system radio /sys/class/power_supply/battery/batt_reset_soc
     chown system radio /sys/class/power_supply/battery/update
     chown system radio /sys/class/power_supply/battery/factory_mode
@@ -499,10 +485,10 @@ on boot
     chown system radio /sys/class/power_supply/battery/wc_enable
     chown system radio /sys/class/power_supply/battery/lcd
 
-# Permission for fast dormancy for RIL
+    # Permission for fast dormancy for RIL
     chown system radio /sys/devices/virtual/sec/bamdmux/waketime
 
-# Permissions for gpio_keys
+    # Permissions for gpio_keys
     chown system system /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys 116,172
 
@@ -556,4 +542,3 @@ service audiod /system/bin/audiod
    class late_start
    user system
    group system
-
