@@ -50,7 +50,7 @@ on init
     symlink /sdcard /storage/sdcard0
 
 on early-boot
-    # set RLIMIT_MEMLOCK to 64MB
+    # Set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     chown system graphics /sys/class/graphics/fb1/hpd
     chown system graphics /sys/class/graphics/fb1/vendor_name
@@ -72,7 +72,7 @@ on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
-    # permissions for bluetooth.
+    # Permissions for bluetooth.
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -90,21 +90,21 @@ on boot
     chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
     chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
 
-    #Bluetooth UART dev
+    # Bluetooth UART dev
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-    #Basic permissions
+    # Basic permissions
     chown root system /dev/socket
     chmod 775 /dev/socket
 
-    # for BT MAC address
+    # BT MAC address
     mkdir /efs/bluetooth 0775 radio system
     # if already exist
     chown radio system /efs/bluetooth
     chmod 0775 /efs/bluetooth
 
-    # bluetooth LPM
+    # Bluetooth LPM
     chmod 0660 /proc/bluetooth/sleep/lpm
     chmod 0220 /proc/bluetooth/sleep/btwrite
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
@@ -112,7 +112,7 @@ on boot
     chmod 0600 /dev/btlock
     chown bluetooth bluetooth /dev/btlock
 
-    #Create QMUX deamon socket area
+    # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
@@ -122,12 +122,12 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    #Remove SUID bit for iproute2 ip tool
+    # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
-    #For bridgemgr daemon to inform the USB driver of the correct transport
+    # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
@@ -135,7 +135,7 @@ on boot
     write /proc/sys/net/core/rmem_max  2097152
     write /proc/sys/net/core/wmem_max  2097152
 
-    #To allow interfaces to get v6 address when tethering is enabled
+    # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
@@ -144,26 +144,13 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet5/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio3/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio4/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio5/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
 
-    # leds
+    # Leds
     chown system system  /sys/class/sec/sec_touchkey/brightness
     chown system system  /sys/class/sec/sec_touchkey/max_brightness
-
     chown system system  /sys/class/leds/led:rgb_green/brightness
     chown system system  /sys/class/leds/led:rgb_blue/brightness
-
     chown system system  /sys/class/leds/led:rgb_green/blink
     chown system system  /sys/class/leds/led:rgb_blue/blink
 
@@ -177,7 +164,7 @@ on boot
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_send
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_ver_check
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_led_status
-    
+
     chown system system /sys/class/input/input0/enabled
     chmod 0660 /sys/class/input/input0/enabled
     chown system system /sys/class/input/input1/enabled
@@ -221,10 +208,10 @@ on boot
 
     chmod 666 /sys/class/camera/flash/rear_flash
     chown system camera /sys/class/camera/flash/rear_flash
-    
+
     chmod 0660 /sys/class/leds/torch-sec1/brightness
     chown system camera /sys/class/leds/torch-sec1/brightness
- 
+
     chown system system /sys/class/sec/sec_touchkey/keypad_enable
     chmod 0660 /sys/class/sec/sec_touchkey/keypad_enable
 
@@ -244,24 +231,11 @@ on boot
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
-    # permission for Input Device(Wacom).
+    # Permission for Input Device(Wacom).
     chmod 0660 /sys/class/input/input4/enabled
     chown system system /sys/class/input/input4/enabled
 
-    # permissions for S-Pen
-    chmod 0660 /sys/class/input/input3/enabled
-    chown system system /sys/class/input/input3/enabled
-    chown system radio /sys/class/sec/sec_epen/epen_firm_update
-    chown system radio /sys/class/sec/sec_epen/epen_rotation
-    chown system radio /sys/class/sec/sec_epen/epen_hand
-    chown system radio /sys/class/sec/sec_epen/epen_reset
-    chown system radio /sys/class/sec/sec_epen/epen_reset_result
-    chown system radio /sys/class/sec/sec_epen/epen_checksum
-    chown system radio /sys/class/sec/sec_epen/epen_checksum_result
-    chown system radio /sys/class/sec/sec_epen/epen_saving_mode
-    chown system radio /sys/class/sec/sec_epen/boost_level
-    
-    # permission for Input Device (Wacom).
+    # Permissions for S-Pen
     chmod 0660 /sys/class/input/input3/enabled
     chown system system /sys/class/input/input3/enabled
     chown system radio /sys/class/sec/sec_epen/epen_firm_update
@@ -274,7 +248,20 @@ on boot
     chown system radio /sys/class/sec/sec_epen/epen_saving_mode
     chown system radio /sys/class/sec/sec_epen/boost_level
 
-    # permissions for Input Device (Touch)
+    # Permission for Input Device (Wacom)
+    chmod 0660 /sys/class/input/input3/enabled
+    chown system system /sys/class/input/input3/enabled
+    chown system radio /sys/class/sec/sec_epen/epen_firm_update
+    chown system radio /sys/class/sec/sec_epen/epen_rotation
+    chown system radio /sys/class/sec/sec_epen/epen_hand
+    chown system radio /sys/class/sec/sec_epen/epen_reset
+    chown system radio /sys/class/sec/sec_epen/epen_reset_result
+    chown system radio /sys/class/sec/sec_epen/epen_checksum
+    chown system radio /sys/class/sec/sec_epen/epen_checksum_result
+    chown system radio /sys/class/sec/sec_epen/epen_saving_mode
+    chown system radio /sys/class/sec/sec_epen/boost_level
+
+    # Permissions for Input Device (Touch)
     chmod 0660 /sys/class/input/input2/enabled
     chown system system /sys/class/input/input2/enabled
     chown system radio /sys/class/sec/sec_touchkey/extra_button_event
@@ -291,7 +278,7 @@ on boot
 # msm specific files that need to be created on /data
 on post-fs-data
 
-# we will remap this as /storage/container with the sdcard fuse tool
+    # we will remap this as /storage/container with the sdcard fuse tool
     mkdir /data/container 0770 system system
     chown system system /data/container
 
@@ -308,17 +295,17 @@ on post-fs-data
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
 
-    # for WIFI TRP/TIS
+    # WIFI TRP/TIS
     chown system root /data/.psm.info
     chmod 0664 /data/.psm.info
 
-    # for WIFI Cert
+    # WIFI Cert
     chmod 0664 /data/.bustxglom.info
     chmod 0664 /data/.roamoff.info
     chmod 0664 /data/.frameburst.info
     chmod 0664 /data/.txbf.info
 
-    # for WIFI MAC address
+    # WIFI MAC address
     mkdir /efs/wifi 0775 radio system
     chown system wifi /efs/wifi/.mac.info
     chmod 0660 /efs/wifi/.mac.info
@@ -343,7 +330,7 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-# permissions for bluetooth.
+    # Permissions for bluetooth.
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
     chown radio net_bt_stack /efs/bluetooth/bt_addr
@@ -355,7 +342,7 @@ on post-fs-data
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
-# bluetooth LPM
+    # Bluetooth LPM
     chmod 0660 /proc/bluetooth/sleep/lpm
     chmod 0220 /proc/bluetooth/sleep/btwrite
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
@@ -371,34 +358,34 @@ on post-fs-data
     chmod 0660 /sys/class/input/input3/enabled
     chmod 0660 /sys/class/input/input18/enabled
 
-    #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
+    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
-    #Create directories for wiper services
+    # Create directories for wiper services
     mkdir /data/wpstiles/ 0755 shell
     mkdir /data/wiper 0755 gps qcom_oncrpc
 
-    #Create directories for gpsone_daemon services
+    # Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
 
-    #Create directories for QuIPS
+    # Create directories for QuIPS
     mkdir /data/misc/quipc 0770 system gps
 
-    #Create directories for Location services
+    # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
 
-    #Create directory from IMS services
+    # Create directory from IMS services
     mkdir /data/shared 0755
     chown system system /data/shared
 
-    #Create directory for FOTA
+    # Create directory for FOTA
     mkdir /data/fota 0771
     chown system system /data/fota
 
-    #Create directory for hostapd
+    # Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
 
     # Create /data/time folder for time-services
@@ -406,27 +393,24 @@ on post-fs-data
     mkdir /data/system/time 0700 system system
 
     mkdir /data/audio/ 0770 media audio
+
     # Enable the setgid bit on the directory
     chmod 2770 /data/audio
     chown system system /sys/devices/virtual/lcd/panel/panel/backlight
     setprop vold.post_fs_data_done 1
 
-
-# GPIO DVS
+    # GPIO DVS
     chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
 
-# sensor
+    # Sensor
     chown system system /efs/FactoryApp/baro_delta
     chmod 0640 /efs/FactoryApp/baro_delta
     restorecon /efs/FactoryApp/baro_delta
-
     chown system system /efs/gyro_cal_data
     chmod 0640 /efs/gyro_cal_data
     restorecon /efs/gyro_cal_data
 
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd
-
+# Services
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -508,7 +492,6 @@ on property:init.svc.macloader=stopped
     chmod 0664 /data/.cid.info
     chown system root /data/.rev
     chmod 0664 /data/.rev
-# end of wifi
 
 service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    class late_start
@@ -541,16 +524,12 @@ on property:sys.boot_completed=1
     write /sys/module/msm_pm/modes/cpu1/retention/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu2/retention/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu3/retention/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/retention/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu1/retention/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu2/retention/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu3/retention/suspend_enabled 1
-    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/core_control/enabled 0
 
     # Configure the CPU governor
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
@@ -567,7 +546,6 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
-    write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
     chown root system /sys/devices/system/cpu/mfreq
@@ -587,6 +565,8 @@ on property:sys.boot_completed=1
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
     write /sys/module/cpu_boost/parameters/plug_boost_freq 1728000
     write /sys/module/cpu_boost/parameters/plug_boost_ms 5
+
+    write /sys/module/msm_thermal/core_control/enabled 1
 
     # Post boot services
     start mpdecision
@@ -618,10 +598,6 @@ service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
 on property:persist.data.ds_fmc_app.mode=1
     start ds_fmc_appd
 
-on property:ro.data.large_tcp_window_size=true
-    # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
 service hcidump /system/bin/sh /system/etc/hcidump.sh
     user bluetooth
     group bluetooth system net_bt_admin net_admin
@@ -630,6 +606,7 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
 
 service charger /charger
     class charger
+    seclabel u:r:healthd:s0
 
 # Disable SSR to SoC restart
 on property:persist.sys.ssr.restart_level=1
